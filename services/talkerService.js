@@ -1,4 +1,4 @@
-const talkerModel = require('./talkerModel');
+const talkerModel = require('../models/talkerModel');
 
 const talkerService = {
   async getTalkers() {

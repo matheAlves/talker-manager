@@ -1,4 +1,4 @@
-const talkerService = require('./talkerService');
+const talkerService = require('../services/talkerService');
 
 const talkerController = {
   async getTalkers(req, res) {
