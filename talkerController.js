@@ -1,9 +1,9 @@
 const talkerService = require('./talkerService');
 
 const talkerController = {
-  async get(req, res) {
+  async getTalkers(req, res) {
     const result = await talkerService.get();
-    res.status(200).send(result);
+    res.status(200).json(result);
   },
 };
 
