@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 
 const talkerModel = {
-  async get() {
+  async getTalkers() {
     const talkers = await fs.readFile('./talker.json', 'utf-8');
   return JSON.parse(talkers);
   },
