@@ -1,11 +1,9 @@
-const InvalidLogin = require('../errors/InvalidLogin');
+const Joi = require('joi');
 
-const loginService = {
-  
-  async validateLogin(email, password) {
-    if (!email || !password) {
-      throw new InvalidLogin('preencha os 2 campos');
-    }
+const loginService = {  
+  async validateEmail(email) {
+    const schema = Joi.object({ email: Joi.string().email().required() });
+    await schema.validateAsync({ email });
   },
 };
 
