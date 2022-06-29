@@ -4,14 +4,14 @@ const talkerService = require('../services/talkerService');
 const talkerController = {
   async getTalkers(_req, res) {
     const result = await talkerService.getTalkers();
-    res.status(200).json(result);
+  return res.status(200).json(result);
   },
 
   async getTalker(req, res) {
     const { id } = req.params;
     const talker = await talkerService.getTalker(Number(id));
     if (!talker) res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
-    res.status(200).json(talker);
+   return res.status(200).json(talker);
   },
 
   async validateToken(req, res, next) {
@@ -67,7 +67,7 @@ const talkerController = {
     if (!watchedAt) return res.status(400).json({ message: 'O campo "watchedAt" é obrigatório' });
     const validDate = await talkerService.validateWatchedAt(watchedAt);
     if (!validDate) {
-      res.status(400)
+     return res.status(400)
         .json({ message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"' });
       }
     
@@ -91,7 +91,7 @@ const talkerController = {
   async add(req, res) {
     const talker = req.body;
     const newTalker = await talkerService.add(talker);
-    res.status(201).json(newTalker);
+    return res.status(201).json(newTalker);
   },
 
   async edit(req, res) {
