@@ -100,6 +100,12 @@ const talkerController = {
     const editTalker = await talkerService.edit(id, body);
     res.status(200).json(editTalker);
   },
+
+  async delete(req, res) {
+    const id = Number(req.params.id);
+    await talkerService.delete(id);
+    res.status(204).send();
+  },
 };
 
-module.exports = talkerController;
+module.exports = talkerController;  

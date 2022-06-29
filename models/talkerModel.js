@@ -32,6 +32,12 @@ const talkerModel = {
     await fs.writeFile('./talker.json', JSON.stringify(all));
     return all[index];
   },
+
+  async delete(id) {
+    const all = await talkerModel.getTalkers();
+    const newAll = all.filter((t) => t.id !== id);
+    await fs.writeFile('./talker.json', JSON.stringify(newAll));
+  },
 };
 
 module.exports = talkerModel;

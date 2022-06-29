@@ -42,6 +42,10 @@ const talkerService = {
     const talkerEdit = await talkerModel.edit(idN, body);
     return talkerEdit;
   },
+
+  async delete(id) {
+    await talkerModel.delete(id);
+  },
 };
 
 module.exports = talkerService;

@@ -23,4 +23,9 @@ talkerController.verifyTalk1,
 talkerController.verifyTalk2,
 talkerController.edit);
 
+talkerRoute.delete('/:id',
+talkerController.validateToken,
+talkerController.delete,
+)
+
 module.exports = talkerRoute;
