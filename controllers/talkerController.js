@@ -106,6 +106,12 @@ const talkerController = {
     await talkerService.delete(id);
     res.status(204).send();
   },
+
+  async query(req, res) {
+    const { query } = req;
+    const result = await talkerService.search(query);
+    res.status(200).json(result);
+  },
 };
 
 module.exports = talkerController;  

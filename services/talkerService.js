@@ -46,6 +46,12 @@ const talkerService = {
   async delete(id) {
     await talkerModel.delete(id);
   },
+
+  async search(query) {
+    const all = await talkerModel.getTalkers();
+    const result = await all.filter((t) => t.name.toLowerCase().includes(query.q.toLowerCase()));
+    return result;
+  },
 };
 
 module.exports = talkerService;
