@@ -8,8 +8,7 @@ const talkerService = {
   },
 
   async getTalker(id) {
-    const talkers = await talkerModel.getTalkers();
-    const talker = talkers.find((t) => t.id === id);
+    const talker = await talkerModel.getTalker(id);
     return talker;
   },
 
@@ -28,7 +27,7 @@ const talkerService = {
 
   async validateRate(rate) {
     const schema = Joi.object({
-      rate: Joi.number().greater(0).less(6).integer(),
+      rate: Joi.number().min(1).max(5).integer(),
     });
   await schema.validateAsync({ rate });
   },
@@ -36,6 +35,12 @@ const talkerService = {
   async add(talker) {
     const newTalker = await talkerModel.add(talker);
     return newTalker;
+  },
+
+  async edit(id, body) {
+    const idN = Number(id);
+    const talkerEdit = await talkerModel.edit(idN, body);
+    return talkerEdit;
   },
 };
 

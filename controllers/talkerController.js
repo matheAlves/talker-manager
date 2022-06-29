@@ -77,7 +77,9 @@ const talkerController = {
   async verifyTalk2(req, res, next) {
     const { talk } = req.body;
     const { rate } = talk;
-    if (!rate) return res.status(400).json({ message: 'O campo "rate" é obrigatório' });
+    if (!rate && rate !== 0) {
+      return res.status(400).json({ message: 'O campo "rate" é obrigatório' });
+    }
     try {
       await talkerService.validateRate(rate);
     } catch (e) {
@@ -90,6 +92,13 @@ const talkerController = {
     const talker = req.body;
     const newTalker = await talkerService.add(talker);
     res.status(201).json(newTalker);
+  },
+
+  async edit(req, res) {
+    const { id } = req.params;
+    const { body } = req;
+    const editTalker = await talkerService.edit(id, body);
+    res.status(200).json(editTalker);
   },
 };
 
