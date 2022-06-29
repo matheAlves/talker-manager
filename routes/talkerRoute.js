@@ -25,7 +25,6 @@ talkerController.edit);
 
 talkerRoute.delete('/:id',
 talkerController.validateToken,
-talkerController.delete,
-)
+talkerController.delete);
 
 module.exports = talkerRoute;

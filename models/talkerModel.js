@@ -1,6 +1,4 @@
 const fs = require('fs/promises');
-const talkerService = require('../services/talkerService');
-const { getTalker } = require('../services/talkerService');
 
 const talkerModel = {
   async getTalkers() {
